@@ -1,0 +1,29 @@
+{
+  "name": "hammadi",
+  "description": "Plugins for working with public social data from Claude Code.",
+  "owner": {
+    "name": "Hammadi",
+    "url": "https://hammadi.dev"
+  },
+  "plugins": [
+    {
+      "name": "instagram-scraper",
+      "source": "./plugins/instagram-scraper",
+      "description": "Read public Instagram data from Claude Code: a profile's posts and reels with view counts, every comment on a post, tagged posts, stories, followers, likers, media URLs, keyword and reels search, and an influencer database filtered by niche, country and follower tier.",
+      "version": "1.0.0",
+      "category": "data",
+      "author": {
+        "name": "Hammadi",
+        "url": "https://hammadi.dev"
+      },
+      "homepage": "https://hammadi.dev",
+      "keywords": [
+        "instagram",
+        "scraping",
+        "social-media",
+        "influencer",
+        "api"
+      ]
+    }
+  ]
+}

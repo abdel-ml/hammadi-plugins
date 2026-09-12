@@ -1,0 +1,10 @@
+{
+  "name": "instagram-scraper",
+  "description": "Read public Instagram data from Claude Code - posts, reels, comments, followers, search and an influencer database.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Hammadi",
+    "url": "https://hammadi.dev"
+  },
+  "homepage": "https://hammadi.dev"
+}
