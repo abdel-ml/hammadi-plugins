@@ -45,7 +45,7 @@ Every scrape is a live page load, so **always pass a generous timeout**
 | `/v1/profile/reels` | `channel_url*`, `count=12`, `include_profile=true` | The Reels tab only, with `view_count` |
 | `/v1/profile/tagged` | `channel_url*`, `count=12`, `include_profile=true` | Posts *others* tagged this account in (UGC) |
 | `/v1/profile/stories` | `channel_url*` | Active stories; viewing does not mark them seen |
-| `/v1/profile/about` | `channel_url*` | Join date, country, former usernames, bio, counts |
+| `/v1/profile/about` | `channel_url*` | `date_joined`, `account_country`, `former_usernames`, `biography`, `follower_count` |
 | `/v1/profile/followers` | `channel_url*`, `count=50` | See the cap note below |
 | `/v1/profile/following` | `channel_url*`, `count=50` | Not capped - goes deep |
 | `/v1/profile/similar` | `channel_url*`, `count=20` | Instagram's own lookalike suggestions |
@@ -80,8 +80,14 @@ Parameters still go in the query string; the body is empty.
 
 `/v1/influencers/search` covers Instagram, TikTok and YouTube. `tags` is
 comma-separated and is expanded with semantically similar tags, so
-`skincare` also matches `skin care`. Results carry `tag_match_score`
-(1.0 = exact). `total_influencer` is capped by the user's plan.
+`skincare` also matches `skin care`. `total_influencer` is capped by the
+user's plan.
+
+It returns `{"total_influencer", "returned", "total", "has_more",
+"results": [...]}` - note **`results`**, not `rows`. Each row has
+`username`, `name`, `platform`, `country`, `followers`, `avg_views`,
+`engagement_rate`, `tags`, `channel_url` and `tag_match_score`
+(1.0 = an exact tag match).
 
 ## Response shape
 
@@ -160,7 +166,7 @@ res = requests.post(
     timeout=330,
 ).json()
 
-for row in res["rows"]:
+for row in res["results"]:
     print(f'{row["followers"]:>8,}  @{row["username"]:<24} {row.get("country")}')
 ```
 
