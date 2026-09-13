@@ -29,5 +29,4 @@ plugins/<name>/
   skills/<name>/SKILL.md            the skill itself
 ```
 
-Free browser tools and guides for the same data live at
-[hammadi.dev](https://hammadi.dev).
+
